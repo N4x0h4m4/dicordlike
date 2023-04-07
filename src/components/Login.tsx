@@ -3,6 +3,7 @@ import { signInWithPopup } from "firebase/auth";
 import React from "react";
 import { auth, provider } from "../firebase";
 import "./Login.scss";
+import { getAuth, signInAnonymously } from "firebase/auth";
 
 const Login = () => {
   const signIn = () => {
@@ -11,6 +12,20 @@ const Login = () => {
     });
   };
 
+  const noName= () => { 
+    getAuth();
+  signInAnonymously(auth)
+    .then(() => {
+      // Signed in..
+    })
+    .catch((error) => {
+      // const errorCode = error.code;
+      // const errorMessage = error.message;
+      alert(error.message);
+      // ...
+    });
+  };
+    
   return (
     <div className="login">
       {/* <h2>ログインページです。</h2> */}
@@ -20,6 +35,7 @@ const Login = () => {
       </div>
 
       <Button onClick={signIn}>ログイン</Button>
+      <Button onClick={noName}>認証なしログイン</Button>
     </div>
   );
 };
