@@ -5,7 +5,7 @@ import HeadphonesIcon from "@mui/icons-material/Headphones";
 import React, { useEffect, useState } from "react";
 import "./Sidebar.scss";
 import SidebarChannle from "./SidebarChannle";
-import { useAppSelector } from "../app/hooks";
+//import { useAppSelector } from "../app/hooks";
 import { db, auth } from "../firebase";
 import {
   collection,
@@ -14,9 +14,13 @@ import {
   DocumentReference,
 } from "firebase/firestore";
 import useFirebase from "../hooks/useFirebase";
+import { useAppSelector, useAppDispatch } from "../app/hooks";
+
 
 const Sidebar = () => {
   const user = useAppSelector((state) => state.user.user);
+  //const user2 = useAppSelector((state) => state.user.user);
+ 
   // const [channels, setChannels] = useState<Channel[]>([]);
 
   const { documents: channels } = useFirebase("channels");
@@ -35,6 +39,28 @@ const Sidebar = () => {
       // console.log(docRef);
     }
   };
+
+  const [inputText, setInputElement] = useState("");
+  const [text, setText] = useState("ここに表示されます。");
+  const printText = () => {
+    if(inputText !== "") {
+      setText(inputText);
+      setInputElement("");
+    }
+    else
+    {
+      setText("文字を入力してください。");
+    }
+  }
+
+
+  const dispatch = useAppDispatch();
+  const handleDisplayNameChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
+    dispatch({
+        type: "setDisplayName",
+        payload: event.target.value
+    });
+   };
 
   return (
     <div className="sidebar">
@@ -58,7 +84,7 @@ const Sidebar = () => {
           <div className="sidebarChannelsHeader">
             <div className="sidebarHeader">
               <ExpandMoreOutlined />
-              <h4>NAKOチャンネル</h4>
+              <h4>Testチャンネル</h4>
             </div>
             <AddIcon className="sidebarAddChannel" onClick={addChannel} />
           </div>
@@ -95,6 +121,19 @@ const Sidebar = () => {
               <Settings />
             </div>
           </div>
+
+          <div className="sidebarSettings2">
+             <div className="accountName2">
+                   <div className="print">
+          <p>{text}</p>
+        </div>
+                {/* <button onClick={handleDisplayNameChange}>表示する</button> */}
+                <label>ユーザーネーム</label>
+                <input value={inputText} onChange={(e) => setInputElement(e.target.value)} type="text" placeholder="usernameを入力" />
+              </div>
+            
+          </div>
+
         </div>
       </div>
     </div>

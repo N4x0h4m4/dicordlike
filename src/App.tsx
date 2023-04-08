@@ -6,6 +6,7 @@ import Chat from "./components/Chat";
 import { ErrorFallback } from "./components/ErrorFallBack";
 import Login from "./components/Login";
 import Sidebar from "./components/Sidebar";
+import Sidebar2 from "./components/test";
 import { login, logout } from "./features/userSlice";
 import { auth } from "./firebase";
 import { Suspense } from "react";
@@ -40,7 +41,7 @@ function App() {
           {/* sidebar */}
           <ErrorBoundary FallbackComponent={ErrorFallback}>
             {/* <Suspense fallback={<div>...Loading</div>}> */}
-            <Sidebar />
+            <Sidebar/>
             {/* </Suspense> */}
           </ErrorBoundary>
           {/* home */}

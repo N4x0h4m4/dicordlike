@@ -2,6 +2,8 @@ import { Avatar } from "@mui/material";
 import { FieldValue, Timestamp } from "firebase/firestore";
 import React from "react";
 import "./Message.scss";
+//import Sidebar2 from "./components/test";
+
 
 type Props = {
   message: string;
@@ -13,6 +15,7 @@ type Props = {
     displayName: string;
   };
 };
+
 
 const Message = (props: Props) => {
   const { message, timestamp, user } = props;

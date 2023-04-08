@@ -98,11 +98,30 @@
           }
         }
       }
-
+    
       .sidebarVoice {
         display: flex;
         gap: 12px;
         color: #686a6e;
+      }
+    }
+
+
+    .sidebarSettings2 {
+      .accountName2 {
+        margin-left: 5px;
+        margin-top: 270px;
+
+        h4 {
+          color: white;
+          font-weight: 500;
+        }
+        span {
+          color: #686a6e;
+        }
+        input {
+          color: #686a6e;
+        }
       }
     }
   }
