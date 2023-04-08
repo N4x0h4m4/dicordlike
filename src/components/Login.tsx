@@ -80,7 +80,7 @@ const Login = () => {
       </div>
 
       <Button onClick={signIn}>ログイン</Button>
-      <Button onClick={noName}>認証なしログイン</Button>   
+      <Button onClick={noName}>匿名ログイン（認証なし）</Button>   
     </div>
   );
 };
